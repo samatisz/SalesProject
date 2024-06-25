@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -32,7 +31,7 @@ public class Main {
             String response = myScanner.nextLine();
             switch (response) {
                 case "1":
-                    displayAllItems;
+                    displayAllInventory();
                     break;
                 case "2":
                     addNewItem;
@@ -51,18 +50,19 @@ public class Main {
         myScanner.close();
     }
 
-    public static void loadInventory(String FILE_NAME, ArrayList<Product> inventory) {
+    public static void displayAllInventory() {
         try {
             FileReader reader = new FileReader(FILE_NAME);
             BufferedReader buff = new BufferedReader(reader);
             String line;
             while ((line = buff.readLine()) != null) {
                 String[] parts = line.split("\\|");
-                if (parts.length == 3) {
-                    String id = parts[0].trim();
-                    String name = parts[1].trim();
-                    double price = Double.parseDouble(parts[2]);
-                    Product product = new Product(id, name, price);
+                if (parts.length == 4) {
+                    double price = Double.parseDouble(parts[0]);
+                    String type = parts[1].trim();
+                    String title = parts[2].trim();
+                    String fandom = parts[3].trim();
+                    Product product = new Product(price, type, title, fandom);
                     inventory.add(product);
                 }
             }
@@ -74,6 +74,14 @@ public class Main {
         } catch (IOException e) {
             System.out.println("Error occurred when reading from the file." + e.getMessage());
         }
+
+//        public void addNewItem() {
+//
+//        }
+//
+//        public void removeItem() {
+//
+//        }
     }
 
 

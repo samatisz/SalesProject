@@ -1,27 +1,47 @@
 package sales;
 
 public class Product {
-    private String id;
-    private String name;
     private double price;
+    private String type;
+    private String title;
+    private String fandom;
 
-    public Product(String id, String name, double price) {
-        this.id = id;
-        this.name = name;
+    public Product(double price, String type, String title, String fandom) {
         this.price = price;
+        this.type = type;
+        this.title = title;
+        this.fandom = fandom;
     }
-
-    public String getId() {
-        return id;
-    }
-
-
-    public String getName() {
-        return name;
-    }
-
 
     public double getPrice() {
         return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getFandom() {
+        return fandom;
+    }
+
+    public void setFandom(String fandom) {
+        this.fandom = fandom;
     }
 }
